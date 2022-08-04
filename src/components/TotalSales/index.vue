@@ -3,9 +3,15 @@
     title="累计销售额"
     value="$ 320,099,8"
   >
+    <template>
+      <div class="compare">
+      </div>
+    </template>
     <template v-slot:footer>
-      <span>昨日销售额</span>
-      <span class="money">￥ 30000</span>
+      <div>
+        <span>昨日销售额</span>
+        <span class="money">￥ 30000</span>
+      </div>
     </template>
   </comm-card>
 </template>
@@ -21,6 +27,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .compare {
+    height: 100%;
+    background: yellow;
+  }
   span {
     font-size: 12px;
   }
