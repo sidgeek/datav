@@ -1,7 +1,7 @@
 <template>
   <div class="common-card">
-    <div class="title">1</div>
-    <div class="value"># 222</div>
+    <div class="title">{{title}}</div>
+    <div class="value">{{value}}</div>
     <div class="chart"></div>
     <div class="line"></div>
     <div class="total">5</div>
@@ -9,7 +9,12 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    title: String,
+    value: String
+  }
+}
 </script>
 
 <style lang="scss" scoped>

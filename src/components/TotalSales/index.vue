@@ -1,5 +1,8 @@
 <template>
-  <comm-card />
+  <comm-card
+    title="累计销售额"
+    value="$ 320,099,8"
+  />
 </template>
 
 <script>

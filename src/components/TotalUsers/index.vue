@@ -1,5 +1,8 @@
 <template>
-  <comm-card />
+  <comm-card
+    title="累计用户数"
+    value="$ 320,099,8"
+  />
 </template>
 
 <script>
