@@ -5,7 +5,7 @@
   >
     <template v-slot:footer>
       <span>昨日销售额</span>
-      <span>￥ 30000</span>
+      <span class="money">￥ 30000</span>
     </template>
   </comm-card>
 </template>
@@ -20,4 +20,13 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+  span {
+    font-size: 12px;
+  }
+  .money {
+    margin-left: 5px;
+    color: #333;
+    font-weight: 700;
+  }
+</style>
