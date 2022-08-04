@@ -1,14 +1,12 @@
 <template>
-  <comm-card></comm-card>
+  <comm-card />
 </template>
 
 <script>
-import CommCard from '../CommCard'
+import CommCardMixinVue from '@/mixins/CommCardMixin.vue'
 
 export default {
-  components: {
-    CommCard
-  }
+  mixins: [CommCardMixinVue]
 }
 </script>
 
