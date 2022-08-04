@@ -34,7 +34,7 @@ export default {
   }
   .chart {
     height: 50px;
-    background: red;
+    // background: red;
   }
   .line {
     margin: 10px 0;

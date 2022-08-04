@@ -4,14 +4,20 @@
     value="$ 320,099,8"
   >
     <template>
-      <div class="compare">
+      <div class="compare-wrapper">
+        <div class="compare">
+          <span>日同比</span>
+          <span class="emphasis">7.33%</span>
+        </div>
+        <div class="compare">
+          <span>月同比</span>
+          <span class="emphasis">7.33%</span>
+        </div>
       </div>
     </template>
     <template v-slot:footer>
-      <div>
-        <span>昨日销售额</span>
-        <span class="money">￥ 30000</span>
-      </div>
+      <span>昨日销售额</span>
+      <span class="emphasis">￥ 30000</span>
     </template>
   </comm-card>
 </template>
@@ -27,14 +33,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .compare {
+  .compare-wrapper {
     height: 100%;
-    background: yellow;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .compare {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      margin-top: 3px;
+      color: #666;
+    }
   }
-  span {
-    font-size: 12px;
-  }
-  .money {
+  .emphasis {
     margin-left: 5px;
     color: #333;
     font-weight: 700;
