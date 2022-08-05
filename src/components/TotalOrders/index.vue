@@ -4,7 +4,8 @@
     value="$ 320,099,8"
   >
     <template>
-      <div id="total-orders-chart" :style="{ width: '100%', height: '100%' }"/>
+      <v-chart :options="getOptions()" />
+      <!-- <div id="total-orders-chart" :style="{ width: '100%', height: '100%' }"/> -->
     </template>
     <template v-slot:footer>
       <span>昨日订单量</span>
@@ -18,10 +19,9 @@ import CommCardMixinVue from '@/mixins/CommCardMixin.vue'
 
 export default {
   mixins: [CommCardMixinVue],
-  mounted () {
-    const chartDom = document.getElementById('total-orders-chart')
-    const chart = this.$echarts.init(chartDom)
-       chart.setOption({
+  methods: {
+    getOptions () {
+      return {
         xAxis: {
           type: 'category',
           show: false,
@@ -50,7 +50,8 @@ export default {
           left: 0,
           right: 0
         }
-      })
+      }
+    }
   }
 }
 </script>
