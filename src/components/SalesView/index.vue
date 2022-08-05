@@ -1,8 +1,21 @@
 <template>
-  <div>
-    <v-chart
-      :options="data"
-    />
+  <div class="sales-view">
+    <el-card shadow="hover">
+      <template v-slot:header>
+        <div class="menu-wrapper">
+          <el-menu mode="horizontal"
+            :default-active="activeIndex"
+            @select="onMenuSelect"
+          >
+            <el-menu-item index="1">销售额</el-menu-item>
+            <el-menu-item index="2">访问量</el-menu-item>
+          </el-menu>
+        </div>
+      </template>
+      <template>
+        <div>222</div>
+      </template>
+    </el-card>
   </div>
 </template>
 
@@ -10,21 +23,19 @@
   export default {
     data () {
       return {
-        data: {
-          xAxis: {
-            type: 'category'
-          },
-          yAxis: {
-          },
-          series: [{
-            type: 'line',
-            data: [200, 250, 300]
-          }]
-        }
+        activeIndex: '1'
+      }
+    },
+    methods: {
+      onMenuSelect (index) {
+        this.activeIndex = index
       }
     }
   }
 </script>
 
-<style>
+<style lang="scss" scoped>
+  .sales-view {
+    margin-top: 20px;
+  }
 </style>
