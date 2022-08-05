@@ -21,6 +21,7 @@ specifiers:
   sass-loader: ^12.0.0
   vue: ^2.6.14
   vue-cli-plugin-element: ~1.0.1
+  vue-echarts: 5.0.0-beta.0
   vue-router: ^3.5.1
   vue-template-compiler: ^2.6.14
 
@@ -29,6 +30,7 @@ dependencies:
   echarts: registry.npmmirror.com/echarts/4.9.0
   element-ui: registry.npmmirror.com/element-ui/2.15.9_vue@2.7.8
   vue: registry.npmmirror.com/vue/2.7.8
+  vue-echarts: registry.npmmirror.com/vue-echarts/5.0.0-beta.0_echarts@4.9.0+vue@2.7.8
   vue-router: registry.npmmirror.com/vue-router/3.5.4
 
 devDependencies:
@@ -6273,7 +6275,6 @@ packages:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/lodash/-/lodash-4.17.21.tgz}
     name: lodash
     version: 4.17.21
-    dev: true
 
   registry.npmmirror.com/log-symbols/4.1.0:
     resolution: {integrity: sha512-8XPvpAA8uyhfteu8pIvQxpJZ7SYYdpUivZpGy6sFsBuKRY/7rQGavedeB8aK+Zkyq6upMFVL/9AW6vOYzfRyLg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/log-symbols/-/log-symbols-4.1.0.tgz}
@@ -7824,6 +7825,12 @@ packages:
     version: 1.0.0
     dev: true
 
+  registry.npmmirror.com/resize-detector/0.1.10:
+    resolution: {integrity: sha512-iLcXC8A6Fb0DfA+TRiywrK/0A22bFqkhntjMJMEzXDA4XkcEkfwpNbv7W8iewUiD0xYIaeiXOfiEehTqGKsUFw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/resize-detector/-/resize-detector-0.1.10.tgz}
+    name: resize-detector
+    version: 0.1.10
+    dev: false
+
   registry.npmmirror.com/resize-observer-polyfill/1.5.1:
     resolution: {integrity: sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz}
     name: resize-observer-polyfill
@@ -8858,6 +8865,22 @@ packages:
     name: vue-cli-plugin-element
     version: 1.0.1
     dev: true
+
+  registry.npmmirror.com/vue-echarts/5.0.0-beta.0_echarts@4.9.0+vue@2.7.8:
+    resolution: {integrity: sha512-QZFKGXDAYFQo+F20REpzcdLx79nsl4kOorJRpN+08aYq4YiIlmtWss1Lxadm7Fo+NYyWm8nnT+h4xHv3uqWIDQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-echarts/-/vue-echarts-5.0.0-beta.0.tgz}
+    id: registry.npmmirror.com/vue-echarts/5.0.0-beta.0
+    name: vue-echarts
+    version: 5.0.0-beta.0
+    peerDependencies:
+      echarts: ^4.1.0
+      vue: ^2.4.0
+    dependencies:
+      core-js: registry.npmmirror.com/core-js/3.24.1
+      echarts: registry.npmmirror.com/echarts/4.9.0
+      lodash: registry.npmmirror.com/lodash/4.17.21
+      resize-detector: registry.npmmirror.com/resize-detector/0.1.10
+      vue: registry.npmmirror.com/vue/2.7.8
+    dev: false
 
   registry.npmmirror.com/vue-eslint-parser/8.3.0_eslint@7.32.0:
     resolution: {integrity: sha512-dzHGG3+sYwSf6zFBa0Gi9ZDshD7+ad14DGOdTLjruRVgZXe2J+DcZ9iUhyR48z5g1PqRa20yt3Njna/veLJL/g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-eslint-parser/-/vue-eslint-parser-8.3.0.tgz}

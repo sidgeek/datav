@@ -3,9 +3,11 @@ import App from './App.vue'
 import router from './router'
 import './plugins/element.js'
 import Echarts from 'echarts'
+import VueEcharts from 'vue-echarts'
 
 Vue.config.productionTip = false
 Vue.prototype.$echarts = Echarts
+Vue.component('v-chart', VueEcharts) // 注册组件
 
 new Vue({
   router,
