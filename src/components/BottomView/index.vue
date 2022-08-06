@@ -21,7 +21,11 @@
             </div>
             <div class="table-wrapper">
               <el-table :data="tableData">
-                <el-table-column />
+                <el-table-column prop="rank" label="排名" />
+                <el-table-column prop="keyword" label="关键词" />
+                <el-table-column prop="count" label="总搜索量" />
+                <el-table-column prop="users" label="搜索用户数" />
+                <el-table-column prop="range" label="搜索占比" />
               </el-table>
               <el-pagination />
             </div>
@@ -55,9 +59,43 @@
   export default {
     data() {
       return {
-        searchUserOption: {},
+        searchUserOption: {
+          xAxis: {
+            type: 'category',
+            boundaryGap: false
+          },
+          yAxis: {
+            show: false
+          },
+          series: [{
+              type: 'line',
+              data: [100, 150, 200, 250, 150, 50, 229],
+              areaStyle: {
+                color: 'rgba(95, 187, 255, .5)'
+              },
+              lineStyle: {
+                color: 'rgba(95, 187, 255)'
+              },
+              itemStyle: {
+                opacity: 0
+              },
+              smooth: true
+            }
+          ],
+          grid: {
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0
+          }
+        },
         searchNumberOption: {},
-        tableData: [],
+        tableData: [
+          {id: 1, rank: 1, keyword: '北京', count: 100, users: 90, range: '90%'},
+          {id: 2, rank: 1, keyword: '北京', count: 100, users: 90, range: '90%'},
+          {id: 3, rank: 1, keyword: '北京', count: 100, users: 90, range: '90%'},
+          {id: 4, rank: 1, keyword: '北京', count: 100, users: 90, range: '90%'}
+        ],
         radioSelect: '品类',
         categoryOptions: {}
       }
