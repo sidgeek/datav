@@ -168,7 +168,12 @@
           legend: {
             type: 'scroll',
             orient: 'vertical',
-            height: 50
+            height: 250,
+            left: '70%',
+            top: 'middle',
+            textStyle: {
+              color: '#8c8c8c'
+            }
           }
         }
       }
