@@ -115,8 +115,8 @@
       onPageChange (page) {
       },
       renderPieChart () {
-        const mockData = [
-          { legendname: '粉面店', value: 67, percent: '15%' },
+        const mockData = [ // 通过数据属性直接修改样式
+          { legendname: '粉面店', value: 67, percent: '15%', itemStyle: { color: 'red'} },
           { legendname: '粉面店1', value: 97, percent: '22%' },
           { legendname: '粉面店2', value: 92, percent: '21%' },
         ]
@@ -141,7 +141,15 @@
               }
             },
             center: ['35%', '50%'], // 圆心点位置,也可以是具体的坐标
-            radius: ['45%', '60%']  // 分别对应内半径和外半径 默认值["0%", "75%"]
+            radius: ['45%', '60%'],  // 分别对应内半径和外半径 默认值["0%", "75%"]
+            labelLine: {
+              normal: { // 对应两条线段，可分别调整长度
+                length: 5,
+                length2: 3,
+                smooth: true // 平滑
+              }
+            },
+            clockwise: true // 顺时针、逆时针
           }]
         }
       }
