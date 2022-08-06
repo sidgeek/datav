@@ -132,7 +132,14 @@
           }],
           series: [{
             type: 'pie',
-            data: mockData
+            data: mockData,
+            label: {
+              show: true,
+              position: 'outter',
+              formatter: function (params) {
+                return params.data.legendname
+              }
+            }
           }]
         }
       }
