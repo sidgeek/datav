@@ -53,7 +53,9 @@
           </div>
         </template>
         <template>
-          <v-chart :options="categoryOptions"></v-chart>
+          <div class="chart-wrapper">
+            <v-chart :options="categoryOptions"></v-chart>
+          </div>
         </template>
       </el-card>
     </div>
@@ -106,9 +108,33 @@
         categoryOptions: {}
       }
     },
+    mounted() {
+      this.renderPieChart()
+    },
     methods: {
       onPageChange (page) {
-        
+      },
+      renderPieChart () {
+        const mockData = [
+          { legendname: '粉面店', value: 67, percent: '15%' },
+          { legendname: '粉面店1', value: 97, percent: '22%' },
+          { legendname: '粉面店2', value: 92, percent: '21%' },
+        ]
+        this.categoryOptions = {
+          title: [{
+            text: '品类分布',
+            textStyle: {
+              fontSize: 14,
+              color: '#666'
+            },
+            left: 20,
+            top: 20
+          }],
+          series: [{
+            type: 'pie',
+            data: mockData
+          }]
+        }
       }
     }
   }
