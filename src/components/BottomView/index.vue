@@ -116,9 +116,9 @@
       },
       renderPieChart () {
         const mockData = [ // 通过数据属性直接修改样式
-          { legendname: '粉面店', value: 67, percent: '15%', itemStyle: { color: 'red'} },
-          { legendname: '粉面店1', value: 97, percent: '22%' },
-          { legendname: '粉面店2', value: 92, percent: '21%' },
+          { legendname: '粉面店', value: 67, percent: '15%', itemStyle: { color: '#e7e702'} },
+          { legendname: '粉面店1', value: 97, percent: '22%', itemStyle: { color: '#8d7fec'} },
+          { legendname: '粉面店2', value: 92, percent: '21%', itemStyle: { color: '#5085f2'} },
         ]
         this.categoryOptions = {
           title: [{
