@@ -145,6 +145,7 @@
             textAlign: 'center' // 文字中心点对齐
           }],
           series: [{
+            name: '品类分布',
             type: 'pie',
             data: mockData,
             label: {
@@ -173,6 +174,16 @@
             top: 'middle',
             textStyle: {
               color: '#8c8c8c'
+            }
+          },
+          tooltip: {
+            trigger: 'item',
+            formatter: function (params) {
+              const str = params.seriesName + '<br />' +
+                params.marker + params.data.legendname + '<br />' +
+                '数量：' + params.data.value + '<br />' +
+                '占比：' + params.data.percent + '%'
+              return str
             }
           }
         }
