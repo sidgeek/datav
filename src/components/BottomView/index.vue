@@ -129,6 +129,20 @@
             },
             left: 20,
             top: 20
+          }, {
+            text: '累计订单量', // 标题
+            subtext: '320', // 副标题
+            textStyle: {
+              fontSize: 14,
+              color: '#999'
+            },
+            subtextStyle: {
+              fontSize: 28,
+              color: '#333'
+            },
+            x: '34.5%',
+            y: '42.5%',
+            textAlign: 'center' // 文字中心点对齐
           }],
           series: [{
             type: 'pie',
