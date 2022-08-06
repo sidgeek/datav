@@ -164,6 +164,10 @@
                 smooth: true // 平滑
               }
             },
+            itemStyle: {
+              borderWidth: 4,
+              borderColor: '#fff'
+            },
             clockwise: true // 顺时针、逆时针
           }],
           legend: {
