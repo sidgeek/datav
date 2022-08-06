@@ -135,11 +135,13 @@
             data: mockData,
             label: {
               show: true,
-              position: 'outter',
+              position: 'outter', // inner
               formatter: function (params) {
-                return params.data.legendname
+                return `${params.data.legendname} | ${params.data.percent}`
               }
-            }
+            },
+            center: ['35%', '50%'], // 圆心点位置,也可以是具体的坐标
+            radius: ['45%', '60%']  // 分别对应内半径和外半径 默认值["0%", "75%"]
           }]
         }
       }
