@@ -165,7 +165,11 @@
             },
             clockwise: true // 顺时针、逆时针
           }],
-          legend: {}
+          legend: {
+            type: 'scroll',
+            orient: 'vertical',
+            height: 50
+          }
         }
       }
     }
