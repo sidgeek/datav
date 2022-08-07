@@ -5,6 +5,14 @@
 <script>
 import 'echarts/extension/bmap/bmap'
 
+const testPoint = [{
+  name: '海门',
+  value: [121.15, 31.89, 80]
+}, {
+  name: '南京',
+  value: [118.78, 32.04, 100]
+}]
+
 export default {
   data () {
     return {
@@ -124,7 +132,13 @@ export default {
             }
           }]
         }
-      }
+      },
+      series: [{
+        name: 'sales',
+        type: 'scatter',
+        coordinateSystem: 'bmap',
+        data: testPoint
+      }]
     }
   }
 }
