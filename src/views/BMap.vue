@@ -133,6 +133,9 @@ export default {
           }]
         }
       },
+      tooltip: {
+        name: '销售额'
+      },
       series: [{
         name: 'sales',
         type: 'scatter',
