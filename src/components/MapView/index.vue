@@ -3,7 +3,24 @@
     <div class="left">
       <b-map-scatter />
     </div>
-    <div class="right"></div>
+    <div class="right">
+      <el-card shadow="hover">
+        <template v-slot:header>
+          <div class="title">用户月同比增长</div>
+        </template>
+        <template>
+          <div class="chart-wrapper">111</div>
+        </template>
+      </el-card>
+      <el-card shadow="hover">
+        <template v-slot:header>
+          <div class="title">热门搜索</div>
+        </template>
+        <template>
+          <div class="chart-wrapper">111</div>
+        </template>
+      </el-card>
+    </div>
   </div>
 </template>
 
