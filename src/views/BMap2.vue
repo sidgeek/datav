@@ -1,5 +1,5 @@
 <template>
-  <ve-map :data="chartData"></ve-map>
+  <ve-map :data="chartData" height="800px"></ve-map>
 </template>
 
 <script>
