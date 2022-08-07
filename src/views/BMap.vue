@@ -162,6 +162,22 @@ export default {
             show: true
           }
         }
+      },{name: 'Top 2',
+        type: 'effectScatter',
+        coordinateSystem: 'bmap',
+        data: testPoint, // 这里的数据和上面的使用的是一样的，所以会覆盖,实际应该使用不同的
+        symbolSize: function (val) { // 控制点的大小
+          return val[2] / 10
+        },
+        hoverAnimation: true, // hover上有个动画效果
+        rippleEffect: { // 波纹效果
+          brushType: 'stroke'
+        },
+        itemStyle: {
+          color: 'purple',
+          shadowBlur: 10,
+          shadowColor: '#333'
+        }
       }]
     }
   }
