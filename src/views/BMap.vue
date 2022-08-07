@@ -151,10 +151,15 @@ export default {
           return val[2] / 10
         },
         label: { // 添加label
-          show: true,
+          show: false,
           position: 'right',
           formatter: function (v) {
             return `${v.data.name} - ${v.data.value[2]}`
+          }
+        },
+        emphasis: {
+          label: {
+            show: true
           }
         }
       }]
