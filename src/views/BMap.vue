@@ -143,6 +143,19 @@ export default {
         data: testPoint,
         encode: {
           value: 2 // 指定销售额数据为data的index为2
+        },
+        itemStyle: {
+          color: 'purple' // 点的颜色
+        },
+        symbolSize: function (val) { // 控制点的大小
+          return val[2] / 10
+        },
+        label: { // 添加label
+          show: true,
+          position: 'right',
+          formatter: function (v) {
+            return `${v.data.name} - ${v.data.value[2]}`
+          }
         }
       }]
     }
