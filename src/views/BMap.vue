@@ -140,7 +140,10 @@ export default {
         name: 'sales',
         type: 'scatter',
         coordinateSystem: 'bmap',
-        data: testPoint
+        data: testPoint,
+        encode: {
+          value: 2 // 指定销售额数据为data的index为2
+        }
       }]
     }
   }
