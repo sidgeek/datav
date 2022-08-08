@@ -29,6 +29,13 @@ export default {
       mapData: null
     }
   },
+  provide () {
+    return {
+      getReportData: this.getReportData,
+      getWordCloud: this.getWordCloud,
+      getMapData: this.getMapData
+    }
+  },
   methods: {
     getReportData () {
       return this.reportData

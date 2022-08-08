@@ -20,6 +20,7 @@
     <template v-slot:footer>
       <span>昨日销售额</span>
       <span class="emphasis">￥ 30000</span>
+      <div>reportData: {{data}}</div>
     </template>
   </comm-card>
 </template>
@@ -29,6 +30,12 @@ import CommCardMixinVue from '@/mixins/CommCardMixin.vue'
 
 export default {
   mixins: [CommCardMixinVue],
+  computed: {
+    data () {
+      return this.getReportData()
+    }
+  },
+  inject: ['getReportData'],
   components: {
   }
 }
