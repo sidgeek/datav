@@ -45,7 +45,7 @@
           <div class="title-wrapper">
             <div class="title">分类销售排行</div>
             <div class="radio-wrapper">
-              <el-radio-group v-model="radioSelect" size="small">
+              <el-radio-group v-model="radioSelect" size="small" @change="onCategoryChange">
                 <el-radio-button label="品类"></el-radio-button>
                 <el-radio-button label="商品"></el-radio-button>
               </el-radio-group>
@@ -117,6 +117,10 @@
       this.renderPieChart()
     },
     methods: {
+      onCategoryChange(type) {
+        this.radioSelect = type
+        this.renderPieChart()
+      },
       onPageChange (page) {
       },
       renderPieChart () {
