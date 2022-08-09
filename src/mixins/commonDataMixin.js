@@ -19,6 +19,10 @@ function wrapperNumber (o, k) {
   return o && o[k] ? format(o[k]) : 0
 }
 
+function wrapperOriginalNumber (o, k) {
+  return o && o[k] ? o[k] : 0
+}
+
 export default {
   computed: {
     reportData () {
@@ -56,6 +60,21 @@ export default {
     },
     orderUserTrendAxis () {
       return wrapperArray(this.reportData, 'orderUserTrendAxis')
+    },
+    userToday () {
+      return wrapperNumber(this.reportData, 'userToday')
+    },
+    userTodayNumber () {
+      return wrapperOriginalNumber(this.reportData, 'userToday')
+    },
+    userLastMonth () {
+      return wrapperOriginalNumber(this.reportData, 'userLastMonth')
+    },
+    userGrowthLastDay () {
+      return wrapperNumber(this.reportData, 'userGrowthLastDay')
+    },
+    userGrowthLastMonth () {
+      return wrapperNumber(this.reportData, 'userGrowthLastMonth')
     },
     wordCloud () {
       return this.getWordCloud()
