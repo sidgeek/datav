@@ -101,5 +101,10 @@ export default {
       return this.getMapData()
     }
   },
+  methods: {
+    format (v) {
+      return format(v)
+    }
+  },
   inject: ['getReportData', 'getWordCloud', 'getMapData']
 }

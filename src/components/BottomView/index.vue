@@ -10,12 +10,12 @@
             <div class="chart-inner">
               <div class="chart">
                 <div class="chart-title">搜索用户数</div>
-                <div class="chart-data">93,634</div>
+                <div class="chart-data">{{userCount}}</div>
                 <v-chart :options="searchUserOption"></v-chart>
               </div>
               <div class="chart">
                 <div class="chart-title">搜索量</div>
-                <div class="chart-data">93,634</div>
+                <div class="chart-data">{{searchCount}}</div>
                 <v-chart :options="searchNumberOption"></v-chart>
               </div>
             </div>
@@ -105,6 +105,8 @@
         totalData: [],
         total: 0,
         pageSize: 4,
+        userCount: 0,
+        searchCount: 0,
         radioSelect: '品类',
         categoryOptions: {}
       }
@@ -216,6 +218,12 @@
         this.totalData = totalData
         this.total = this.totalData.length
         this.renderTable(1)
+        this.userCount = this.format(totalData.reduce((s, i) => i.users + s, 0))
+        this.searchCount = totalData.reduce((s, i) => i.count + s, 0)
+        this.renderLineChart()
+      },
+      category1 () {
+        this.renderPieChart()
       }
     }
   }
