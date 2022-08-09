@@ -65,6 +65,8 @@
 <script>
  import commonDataMixin from '../../mixins/commonDataMixin'
 
+ const colors = ['#8d7fec', '#5085f2', '#f8726b', '#e7e702', '#78f283', '#4bc1fc']
+
   /* eslint-disable */
   export default {
     mixins: [commonDataMixin],
@@ -118,14 +120,37 @@
       onPageChange (page) {
       },
       renderPieChart () {
-        const mockData = [ // 通过数据属性直接修改样式
-          { legendname: '粉面店', value: 67, percent: '15%', itemStyle: { color: '#e7e702'}, name: '粉面店 | 15%' },
-          { legendname: '粉面店1', value: 97, percent: '22%', itemStyle: { color: '#8d7fec'}, name: '粉面店1 | 22%' },
-          { legendname: '粉面店2', value: 92, percent: '21%', itemStyle: { color: '#5085f2'}, name: '粉面店2 | 21%' },
-        ]
+        if (!this.category1.data1 || !this.category2.data1) {
+          return
+        }
+        let data
+        let axis
+        let total = 0
+        if (this.radioSelect === '品类') {
+          data = this.category1.data1.slice(0, 6)
+          axis = this.category1.axisX.slice(0, 6)
+          total = data.reduce((s, i) => s + i, 0)
+        } else {
+          data = this.category2.data1.slice(0, 6)
+          axis = this.category2.axisX.slice(0, 6)
+          total = data.reduce((s, i) => s + i, 0)
+        }
+        const chartData = []
+        data.forEach((item, index) => {
+          const percent = `${(item / total * 100).toFixed(2)}%`
+          chartData.push({
+            legendname: axis[index],
+            value: item,
+            percent,
+            itemStyle: {
+              color: colors[index]
+            },
+            name: `${axis[index]} | ${percent}`
+          })
+        })
         this.categoryOptions = {
           title: [{
-            text: '品类分布',
+            text: `${this.radioSelect}分布`,
             textStyle: {
               fontSize: 14,
               color: '#666'
@@ -133,8 +158,10 @@
             left: 20,
             top: 20
           }, {
-            text: '累计订单量', // 标题
-            subtext: '320', // 副标题
+            text: '累计订单量',
+            subtext: total,
+            x: '34.5%',
+            y: '42.5%',
             textStyle: {
               fontSize: 14,
               color: '#999'
@@ -143,35 +170,35 @@
               fontSize: 28,
               color: '#333'
             },
-            x: '34.5%',
-            y: '42.5%',
-            textAlign: 'center' // 文字中心点对齐
+            textAlign: 'center'
           }],
           series: [{
             name: '品类分布',
             type: 'pie',
-            data: mockData,
+            data: chartData,
             label: {
-              show: true,
-              position: 'outter', // inner
-              formatter: function (params) {
-                return `${params.data.legendname} | ${params.data.percent}`
+              normal: {
+                show: true,
+                position: 'outter',
+                formatter: function (params) {
+                  return params.data.legendname
+                }
               }
             },
-            center: ['35%', '50%'], // 圆心点位置,也可以是具体的坐标
-            radius: ['45%', '60%'],  // 分别对应内半径和外半径 默认值["0%", "75%"]
+            center: ['35%', '50%'],
+            radius: ['45%', '60%'],
             labelLine: {
-              normal: { // 对应两条线段，可分别调整长度
+              normal: {
                 length: 5,
                 length2: 3,
-                smooth: true // 平滑
+                smooth: true
               }
             },
+            clockwise: false,
             itemStyle: {
               borderWidth: 4,
               borderColor: '#fff'
-            },
-            clockwise: true // 顺时针、逆时针
+            }
           }],
           legend: {
             type: 'scroll',

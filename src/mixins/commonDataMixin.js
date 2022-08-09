@@ -23,6 +23,18 @@ function wrapperOriginalNumber (o, k) {
   return o && o[k] ? o[k] : 0
 }
 
+function wrapperObject (o, k) {
+  if (o && k.indexOf('.') >= 0) {
+    const keys = k.split('.')
+    keys.forEach(key => {
+      o = o[key]
+    })
+    return o
+  } else {
+    return o && o[k] ? o[k] : {}
+  }
+}
+
 export default {
   computed: {
     reportData () {
@@ -96,6 +108,12 @@ export default {
     },
     wordCloud () {
       return this.getWordCloud()
+    },
+    category1 () {
+      return wrapperObject(this.reportData, 'category.data1')
+    },
+    category2 () {
+      return wrapperObject(this.reportData, 'category.data2')
     },
     mapData () {
       return this.getMapData()
