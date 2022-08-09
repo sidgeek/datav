@@ -10,12 +10,12 @@
             <div class="chart-inner">
               <div class="chart">
                 <div class="chart-title">搜索用户数</div>
-                <div class="chart-data">{{userCount}}</div>
+                <div class="chart-data">{{userCount | format}}</div>
                 <v-chart :options="searchUserOption"></v-chart>
               </div>
               <div class="chart">
                 <div class="chart-title">搜索量</div>
-                <div class="chart-data">{{searchCount}}</div>
+                <div class="chart-data">{{searchCount | format}}</div>
                 <v-chart :options="searchNumberOption"></v-chart>
               </div>
             </div>
@@ -218,7 +218,7 @@
         this.totalData = totalData
         this.total = this.totalData.length
         this.renderTable(1)
-        this.userCount = this.format(totalData.reduce((s, i) => i.users + s, 0))
+        this.userCount = totalData.reduce((s, i) => i.users + s, 0)
         this.searchCount = totalData.reduce((s, i) => i.count + s, 0)
         this.renderLineChart()
       },

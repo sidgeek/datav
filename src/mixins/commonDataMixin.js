@@ -101,7 +101,7 @@ export default {
       return this.getMapData()
     }
   },
-  methods: {
+  filters: {
     format (v) {
       return format(v)
     }
