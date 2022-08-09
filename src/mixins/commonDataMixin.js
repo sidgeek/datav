@@ -48,6 +48,15 @@ export default {
     orderUser () {
       return wrapperNumber(this.reportData, 'orderUser')
     },
+    returnRate () {
+      return wrapperPercentage(this.reportData, 'returnRate')
+    },
+    orderUserTrend () {
+      return wrapperArray(this.reportData, 'orderUserTrend')
+    },
+    orderUserTrendAxis () {
+      return wrapperArray(this.reportData, 'orderUserTrendAxis')
+    },
     wordCloud () {
       return this.getWordCloud()
     },

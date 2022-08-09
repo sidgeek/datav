@@ -21,9 +21,10 @@
 
 <script>
 import CommCardMixinVue from '@/mixins/CommCardMixin.vue'
+import commonDataMixin from '@/mixins/commonDataMixin'
 
 export default {
-  mixins: [CommCardMixinVue],
+  mixins: [CommCardMixinVue, commonDataMixin],
   methods: {
     getOptions () {
       return {
