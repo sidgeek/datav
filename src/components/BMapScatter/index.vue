@@ -9,16 +9,23 @@
 </template>
 
 <script>
+import commonDataMixin from '../../mixins/commonDataMixin'
 
-const testPoint = [{
-  name: '海门',
-  value: [121.15, 31.89, 80]
-}, {
-  name: '南京',
-  value: [118.78, 32.04, 100]
-}]
+const convertData = function (data, geo) {
+  const res = []
+  data.forEach(item => {
+    const { name, value } = item
+    const coord = geo[name]
+    res.push({
+      name,
+      value: [...coord, value]
+    })
+  })
+  return res
+}
 
 export default {
+  mixins: [commonDataMixin],
   data () {
     return {
       title: {
@@ -37,36 +44,72 @@ export default {
         },
         tooltip: {}
       },
-      chartSeries: [{
-        name: 'sales',
-        type: 'scatter',
-        coordinateSystem: 'bmap',
-        data: testPoint,
-        encode: {
-          value: 2 // 指定销售额数据为data的index为2
-        },
-        itemStyle: {
-          color: 'purple' // 点的颜色
-        },
-        symbolSize: function (val) { // 控制点的大小
-          return val[2] / 10
-        },
-        label: { // 添加label
-          show: false,
-          position: 'right',
-          formatter: function (v) {
-            return `${v.data.name} - ${v.data.value[2]}`
-          }
-        },
-        emphasis: {
-          label: {
-            show: true
-          }
-        }
-      }]
+      chartSeries: []
     }
   },
-  mounted () {
+  watch: {
+    mapData () {
+      const { data, geo } = this.mapData
+      this.chartSeries = [
+        {
+          name: '销售额',
+          type: 'scatter',
+          coordinateSystem: 'bmap',
+          data: convertData(data, geo),
+          encode: {
+            value: 2
+          },
+          itemStyle: {
+            color: 'purple'
+          },
+          symbolSize: function (val) {
+            return val[2] / 10
+          },
+          label: {
+            show: false,
+            position: 'right',
+            formatter: function (v) {
+              return `${v.data.name} - ${v.data.value[2]}`
+            }
+          },
+          emphasis: {
+            label: {
+              show: true
+            }
+          }
+        },
+        {
+          name: 'Top 10',
+          type: 'effectScatter',
+          coordinateSystem: 'bmap',
+          data: convertData(data.sort(function (a, b) {
+            return b.value - a.value
+          }), geo).slice(0, 10),
+          symbolSize: function (val) {
+            return val[2] / 10
+          },
+          encode: {
+            value: 2
+          },
+          label: {
+            formatter: function (v) {
+              return `${v.data.name} - ${v.data.value[2]}`
+            },
+            position: 'right',
+            show: true
+          },
+          hoverAnimation: true,
+          rippleEffect: {
+            brushType: 'stroke'
+          },
+          itemStyle: {
+            color: 'purple',
+            shadowBlur: 10,
+            shadowColor: '#333'
+          }
+        }
+      ]
+    }
   }
 }
 </script>
