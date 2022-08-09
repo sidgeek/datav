@@ -21,7 +21,8 @@ export default {
   mixins: [CommCardMixinVue, commonDataMixin],
   methods: {
     getOptions () {
-      return {
+      /* eslint-disable */
+      return this.orderTrend.length > 0 ? {
         xAxis: {
           type: 'category',
           show: false,
@@ -50,7 +51,7 @@ export default {
           left: 0,
           right: 0
         }
-      }
+      } : null
     }
   }
 }
