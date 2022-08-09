@@ -51,7 +51,10 @@
 </template>
 
 <script>
+import commonDataMixin from '../../mixins/commonDataMixin'
+
   export default {
+    mixins: [commonDataMixin],
     data () {
       return {
         activeIndex: '1',
@@ -84,36 +87,42 @@
             }
           }]
         },
-        rankData: [
-          {
-            no: 1,
-            name: '麦当劳',
-            money: '323,234'
-          },
-          {
-            no: 2,
-            name: '麦当劳2',
-            money: '323,234'
-          },
-          {
-            no: 3,
-            name: '麦当劳3',
-            money: '323,234'
-          }
-        ],
-        chartOption: {
+        chartOption: {}
+      }
+    },
+    computed: {
+      rankData () {
+        return this.activeIndex === '1' ? this.orderRank : this.userRank
+      }
+    },
+    watch: {
+      orderFullYear () {
+        this.render(this.orderFullYear, this.orderFullYearAxis, '年度销售额')
+      }
+    },
+    methods: {
+      onMenuSelect (index) {
+        this.activeIndex = index
+         if (index === '1') {
+          this.render(this.orderFullYear, this.orderFullYearAxis, '年度销售额')
+        } else {
+          this.render(this.userFullYear, this.userFullYearAxis, '年度用户访问量')
+        }
+      },
+      render (data, axis, title) {
+        this.chartOption = {
           title: {
-            text: '年度销售额',
+            text: title,
             textStyle: {
               fontSize: 12,
               color: '#666'
             },
-            top: 20,
-            left: 25
+            left: 25,
+            top: 20
           },
           xAxis: {
             type: 'category',
-            data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+            data: axis,
             axisTick: {
               alignWithLabel: true,
               lineStyle: {
@@ -145,8 +154,8 @@
           },
           series: [{
             type: 'bar',
-            barWidth: '33%',
-            data: [200, 25, 256, 345, 567, 200, 25, 256, 345, 200, 25, 256]
+            barWidth: '35%',
+            data
           }],
           color: ['#3398DB'],
           grid: {
@@ -156,11 +165,6 @@
             bottom: 50
           }
         }
-      }
-    },
-    methods: {
-      onMenuSelect (index) {
-        this.activeIndex = index
       }
     }
   }
