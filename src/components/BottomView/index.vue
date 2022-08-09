@@ -29,10 +29,10 @@
               </el-table>
               <el-pagination
                 layout="prev, pager, next"
-                :total="100"
-                :page-size="4"
+                :total="total"
+                :page-size="pageSize"
                 background
-                 @current-change="onPageChange"
+                @current-change="onPageChange"
               />
             </div>
           </div>
@@ -63,8 +63,11 @@
 </template>
 
 <script>
+ import commonDataMixin from '../../mixins/commonDataMixin'
+
   /* eslint-disable */
   export default {
+    mixins: [commonDataMixin],
     data() {
       return {
         searchUserOption: {
@@ -98,12 +101,10 @@
           }
         },
         searchNumberOption: {},
-        tableData: [
-          {id: 1, rank: 1, keyword: '北京', count: 100, users: 90, range: '90%'},
-          {id: 2, rank: 1, keyword: '北京', count: 100, users: 90, range: '90%'},
-          {id: 3, rank: 1, keyword: '北京', count: 100, users: 90, range: '90%'},
-          {id: 4, rank: 1, keyword: '北京', count: 100, users: 90, range: '90%'}
-        ],
+        tableData: [],
+        totalData: [],
+        total: 0,
+        pageSize: 4,
         radioSelect: '品类',
         categoryOptions: {}
       }
@@ -191,6 +192,30 @@
             }
           }
         }
+      },
+      renderTable (page) {
+        this.tableData = this.totalData.slice(
+          (page - 1) * this.pageSize,
+          (page - 1) * this.pageSize + this.pageSize
+        )
+      },
+    },
+    watch: {
+      wordCloud () {
+        const totalData = []
+        this.wordCloud.forEach((item, index) => {
+          totalData.push({
+            id: index + 1,
+            rank: index + 1,
+            keyword: item.word,
+            count: item.count,
+            users: item.user,
+            range: `${((item.user / item.count) * 100).toFixed(2)}%`
+          })
+        })
+        this.totalData = totalData
+        this.total = this.totalData.length
+        this.renderTable(1)
       }
     }
   }
