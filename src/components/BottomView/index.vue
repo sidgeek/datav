@@ -201,6 +201,47 @@
           (page - 1) * this.pageSize + this.pageSize
         )
       },
+      renderLineChart () {
+        const createOption = (key) => {
+          const data = []
+          const axis = []
+          this.wordCloud.forEach(item => data.push(item[key]))
+          this.wordCloud.forEach(item => axis.push(item.word))
+          return {
+            xAxis: {
+              type: 'category',
+              boundaryGap: false,
+              data: axis
+            },
+            yAxis: {
+              show: false
+            },
+            tooltip: {},
+            series: [{
+              type: 'line',
+              data,
+              areaStyle: {
+                color: 'rgba(95,187,255,.5)'
+              },
+              lineStyle: {
+                color: 'rgb(95,187,255)'
+              },
+              itemStyle: {
+                opacity: 0
+              },
+              smooth: true
+            }],
+            grid: {
+              top: 0,
+              left: 0,
+              bottom: 0,
+              right: 0
+            }
+          }
+        }
+        this.searchUserOption = createOption('user')
+        this.searchNumberOption = createOption('count')
+      }
     },
     watch: {
       wordCloud () {
