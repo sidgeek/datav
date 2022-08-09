@@ -3,68 +3,69 @@
 </template>
 
 <script>
+import commonDataMixin from '../../mixins/commonDataMixin'
 
-/* eslint-disable */
-
-function getColor(value) {
-  return value > 0 && value <= 0.5 ? 'rgba(97,216,0,.7)'
-    : value > 0.5 && value <= 0.8 ? 'rgba(204,178,26,.7)'
-      : value > 0.8 ? 'rgba(241,47,28,.7)' : '#c7c7cb'
+function getColor (value) {
+  return value > 0 && value <= 0.5 ? 'rgba(97,216,0,.7)' : value > 0.5 && value <= 0.8 ? 'rgba(204,178,26,.7)' : value > 0.8 ? 'rgba(241,47,28,.7)' : '#c7c7cb'
 }
 
 export default {
+  mixins: [commonDataMixin],
   data () {
     return {
-      chartData: {
-        columns: ['city', 'percent'],
-        rows: [{
-          city: 'ShangHai',
-          percent: 0.6
-        }]
-      },
+      chartData: {},
       chartSettings: {}
     }
   },
-  mounted() {
-    this.chartSettings = {
-      seriesMap: {
-        'ShangHai': { // 注意这个属性和上面的对应
+  watch: {
+    userGrowthLastMonth () {
+      this.chartData = {
+        columns: ['title', 'percent'],
+        rows: [{
+          title: '用户月同比增长',
+          percent: this.userGrowthLastMonth / 1000 // 这边为了让数据小点，应该除以100
+        }]
+      }
+      this.chartSettings = {
+        seriesMap: {
+          用户月同比增长: {
             radius: '80%',
             label: {
-              formatter (v) {
-                return `${Math.floor(v.data.value * 100)}%`
+              formatter: (v) => {
+                return `${(v.data.value * 100).toFixed(2)}%`
               },
               textStyle: {
                 fontSize: 36,
                 color: '#999',
-                fontWeight: "normal"
+                fontWeight: 'normal'
               },
-              position: ['50%', '50%'], // 位置
-              insideColor: '#fff' // 文字和水文重叠时的颜色
+              position: ['50%', '50%'],
+              insideColor: '#fff'
             },
-            outline: { // 外边框
+            outline: {
               itemStyle: {
-                borderColor: '#aaa4aa',
+                borderColor: '#aaa4a4',
                 borderWidth: 1,
                 color: 'none',
-                shadowBlur: 0, // 阴影
+                shadowBlur: 0,
                 shadowColor: '#fff'
               },
-              borderDistance: 0 // 外边框和内边框的间距
+              borderDistance: 0
             },
             backgroundStyle: {
               color: '#fff'
             },
-            itemStyle: { // 默认会有阴影值
+            itemStyle: {
               shadowBlur: 0,
-              shadowColor: "#fff"
+              shadowColor: '#fff'
             },
-            amptitude: 8, // 波纹的幅度
+            amplitude: 8,
             color: [getColor(this.chartData.rows[0].percent)]
+          }
         }
       }
     }
-}
+  }
 }
 </script>
 
